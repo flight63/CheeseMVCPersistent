@@ -1,28 +1,31 @@
-﻿@model List<CheeseMVC.Models.Cheese>
+﻿@model IList<CheeseMVC.Models.Cheese>
 
-<h1>@ViewBag.Title</h1>
+    <h1>Cheeses</h1>
 
-<table class="table">
+    <table class="table">
 
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <td>Type</td>
-    </tr>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <td>Category</td>
+        </tr>
 
-    @foreach (var cheese in Model)
+        @foreach (var cheese in Model)
     {
         <tr>
             <td>@cheese.Name</td>
             <td>@cheese.Description</td>
-            <td>@cheese.Type</td>
+            <td>@cheese.Category.Name</td>
         </tr>
     }
-</table>
+    </table>
 
-@if (Model.Count == 0)
+    @if (Model.Count == 0)
 {
     <p>No cheeses yet!</p>
 }
 
-<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+    <p>
+        <a asp-controller="Cheese" asp-action="Add">Add Cheese</a>
+        | <a asp-controller="Cheese" asp-action="Remove">Remove</a>
+    </p>
